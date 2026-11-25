@@ -1,0 +1,19 @@
+{
+  "market": {"S": 100, "K": 100, "T": 1, "r": 0.05, "q": 0, "sigma": 0.2},
+  "black_scholes": {"call": 10.4505835722, "put": 5.5735260223, "delta": 0.636831, "gamma": 0.018762, "vega": 37.524035, "theta": -6.414028, "rho": 53.232482},
+  "bs_price_and_greeks_ns": 75.8,
+  "monte_carlo": [
+    {"method": "plain", "paths": 1000000, "price": 10.445888, "error_vs_bs": -0.004696, "std_error": 0.014708, "ci95": [10.417061, 10.474714], "variance_reduction_per_path": 1.00, "seconds": 0.041},
+    {"method": "antithetic", "paths": 1000000, "price": 10.446546, "error_vs_bs": -0.004038, "std_error": 0.010399, "ci95": [10.426164, 10.466928], "variance_reduction_per_path": 2.00, "seconds": 0.026},
+    {"method": "control_variate", "paths": 1000000, "price": 10.447426, "error_vs_bs": -0.003157, "std_error": 0.005608, "ci95": [10.436434, 10.458418], "variance_reduction_per_path": 6.88, "seconds": 0.042},
+    {"method": "antithetic+control_variate", "paths": 1000000, "price": 10.448470, "error_vs_bs": -0.002114, "std_error": 0.002746, "ci95": [10.443088, 10.453852], "variance_reduction_per_path": 28.69, "seconds": 0.024}
+  ],
+  "convergence": [{"paths": 1000, "mean_abs_error": 0.42742, "mean_std_error": 0.46937}, {"paths": 10000, "mean_abs_error": 0.10779, "mean_std_error": 0.14693}, {"paths": 100000, "mean_abs_error": 0.03592, "mean_std_error": 0.04658}, {"paths": 1000000, "mean_abs_error": 0.01244, "mean_std_error": 0.01472}],
+  "ci95_coverage": {"trials": 1000, "paths_each": 10000, "covered": 0.950},
+  "euler_bias": [{"steps": 1, "error_vs_bs": -0.23901, "std_error": 0.00867}, {"steps": 4, "error_vs_bs": -0.03780, "std_error": 0.00517}, {"steps": 12, "error_vs_bs": -0.00532, "std_error": 0.00388}, {"steps": 52, "error_vs_bs": -0.00474, "std_error": 0.00327}, {"steps": 252, "error_vs_bs": -0.00065, "std_error": 0.00311}],
+  "heston_reference": {"ours": 5.785155434, "published": 5.785155450, "abs_diff": 1.56e-08},
+  "heston_mc": {"params": {"v0": 0.04, "kappa": 2, "theta": 0.04, "xi": 0.5, "rho": -0.7, "r": 0.03}, "semi_analytic": 8.929410, "runs": [{"steps": 12, "paths": 200000, "error": 0.06359, "std_error": 0.02365}, {"steps": 52, "paths": 200000, "error": -0.01927, "std_error": 0.02326}, {"steps": 252, "paths": 200000, "error": -0.00642, "std_error": 0.02317}]},
+  "heston_smile": [{"K": 70, "implied_vol": 0.2623}, {"K": 80, "implied_vol": 0.2365}, {"K": 90, "implied_vol": 0.2115}, {"K": 100, "implied_vol": 0.1875}, {"K": 110, "implied_vol": 0.1658}, {"K": 120, "implied_vol": 0.1495}, {"K": 130, "implied_vol": 0.1409}],
+  "merton": {"lambda": 0.75, "mu_j": -0.1, "sig_j": 0.15, "series": 12.224434, "mc": 12.195812, "mc_std_error": 0.017395, "bs_same_diffusion_vol": 10.450584},
+  "delta_hedge": {"premium": 10.450584, "vs_rebalances": [{"N": 4, "mean_pnl": -0.0118, "std_pnl": 3.2017, "std_pct_of_premium": 30.64, "derman_kamal": 3.3255}, {"N": 16, "mean_pnl": 0.0030, "std_pnl": 1.6585, "std_pct_of_premium": 15.87, "derman_kamal": 1.6627}, {"N": 52, "mean_pnl": -0.0015, "std_pnl": 0.9403, "std_pct_of_premium": 9.00, "derman_kamal": 0.9223}, {"N": 252, "mean_pnl": -0.0017, "std_pnl": 0.4343, "std_pct_of_premium": 4.16, "derman_kamal": 0.4190}, {"N": 1000, "mean_pnl": -0.0004, "std_pnl": 0.2189, "std_pct_of_premium": 2.09, "derman_kamal": 0.2103}], "loglog_slope": -0.4860, "vol_mismatch": [{"sigma_hedge": 0.15, "sigma_real": 0.20, "N": 1000, "mean_pnl": -1.9605, "std_pnl": 0.9008, "ito_predicted_mean": -1.9615, "corr_actual_vs_ito": 0.99940, "rmse_actual_minus_ito": 0.0314}, {"sigma_hedge": 0.25, "sigma_real": 0.20, "N": 1000, "mean_pnl": 1.9883, "std_pnl": 0.7063, "ito_predicted_mean": 1.9873, "corr_actual_vs_ito": 0.99952, "rmse_actual_minus_ito": 0.0220}]}
+}

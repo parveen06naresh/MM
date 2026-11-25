@@ -18,6 +18,7 @@ jobs:
       - run: cmake --build build
       - run: ./build/mme_tests --gtest_brief=1
       - run: ./build/bench_book 200000 1 > /dev/null
+      - run: ./build/options_report > /dev/null
 
   sanitizers:
     name: AddressSanitizer + UBSan
@@ -32,7 +33,7 @@ jobs:
       - run: ./build/mme_tests --gtest_brief=1
 
   python:
-    name: pybind11 module + Avellaneda-Stoikov smoke run
+    name: pybind11 module, Avellaneda-Stoikov smoke run, options cross-check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,3 +44,4 @@ jobs:
       - run: pip install pybind11 numpy
       - run: cmake -S . -B build-py -G Ninja -DMME_BUILD_PYTHON=ON -DMME_BUILD_TESTS=OFF && cmake --build build-py
       - run: python python/as_mm.py --sims 50
+      - run: python python/options_check.py
