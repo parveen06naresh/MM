@@ -1,0 +1,30 @@
+{
+  "params": {
+    "s0": 100,
+    "T": 1,
+    "sigma": 2,
+    "dt": 0.005,
+    "gamma": 0.1,
+    "k": 1.5,
+    "A": 140,
+    "tick": 0.01,
+    "sims": 1000,
+    "seed": 7
+  },
+  "inventory": {
+    "pnl_mean": 64.41,
+    "pnl_std": 6.72,
+    "pnl_mean_over_std": 9.58,
+    "final_inventory_mean": -0.03,
+    "final_inventory_std": 2.96,
+    "pnl_5th_percentile": 53.52
+  },
+  "symmetric": {
+    "pnl_mean": 67.84,
+    "pnl_std": 14.28,
+    "pnl_mean_over_std": 4.75,
+    "final_inventory_mean": 0.33,
+    "final_inventory_std": 8.61,
+    "pnl_5th_percentile": 46.6
+  }
+}

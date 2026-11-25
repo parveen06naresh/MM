@@ -1,0 +1,46 @@
+{
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "messages_per_run": 5000000,
+  "throughput_msgs_per_s_median": 10057175,
+  "throughput_msgs_per_s_range": [
+    9348944,
+    11178991
+  ],
+  "timer_overhead_p50_ns": 21,
+  "all": {
+    "p50_ns": 262,
+    "p90_ns": 455,
+    "p99_ns": 722,
+    "p999_ns": 2970
+  },
+  "add": {
+    "p50_ns": 272,
+    "p90_ns": 454,
+    "p99_ns": 693,
+    "p999_ns": 3679
+  },
+  "cancel": {
+    "p50_ns": 255,
+    "p90_ns": 438,
+    "p99_ns": 663,
+    "p999_ns": 1267
+  },
+  "market": {
+    "p50_ns": 229,
+    "p90_ns": 550,
+    "p99_ns": 968,
+    "p999_ns": 2905
+  },
+  "reduce": {
+    "p50_ns": 257,
+    "p90_ns": 434,
+    "p99_ns": 649,
+    "p999_ns": 1170
+  }
+}

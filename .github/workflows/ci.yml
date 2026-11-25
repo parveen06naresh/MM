@@ -1,0 +1,45 @@
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: build and test (${{ matrix.compiler }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [g++, clang++]
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - run: cmake -S . -B build -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+      - run: cmake --build build
+      - run: ./build/mme_tests --gtest_brief=1
+      - run: ./build/bench_book 200000 1 > /dev/null
+
+  sanitizers:
+    name: AddressSanitizer + UBSan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - run: >
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover=all"
+      - run: cmake --build build
+      - run: ./build/mme_tests --gtest_brief=1
+
+  python:
+    name: pybind11 module + Avellaneda-Stoikov smoke run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - run: pip install pybind11 numpy
+      - run: cmake -S . -B build-py -G Ninja -DMME_BUILD_PYTHON=ON -DMME_BUILD_TESTS=OFF && cmake --build build-py
+      - run: python python/as_mm.py --sims 50
